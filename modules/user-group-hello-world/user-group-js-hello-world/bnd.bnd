@@ -1,0 +1,6 @@
+Bundle-Name: user-group-js-hello-world
+Bundle-SymbolicName: user.group.js.hello.world
+Bundle-Version: 1.0.0
+Liferay-JS-Config: /META-INF/resources/js/config.js
+Web-ContextPath: /user-group-js-hello-world
+Include-Resource: package.json, bower.json

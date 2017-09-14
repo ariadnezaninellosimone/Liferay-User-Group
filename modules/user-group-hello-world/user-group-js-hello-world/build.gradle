@@ -1,0 +1,47 @@
+dependencies {
+}
+
+buildscript {
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "1.0.29"
+	}
+
+	repositories {
+		maven { url "http://cdn.repository.liferay.com/nexus/content/groups/public" }
+	}
+}
+
+import com.liferay.gradle.plugins.node.tasks.DownloadNodeModuleTask
+import com.liferay.gradle.plugins.node.tasks.ExecuteNodeTask
+
+task ardDdownloadBower(type: DownloadNodeModuleTask)
+task ardBowerInstall(type: ExecuteNodeTask)
+task ardModulesInstall(type: Copy)
+
+ardDdownloadBower {
+	nodeDir = new File(buildDir, "node")
+	moduleName = "bower"
+	moduleVersion = "1.8.0"
+}
+
+ardBowerInstall {
+	nodeDir = new File(buildDir, "node")
+	args = [
+		new File(projectDir, "node_modules/bower/bin/bower"),
+		"install",
+		"--allow-root"
+	]
+	dependsOn ardDdownloadBower
+}
+
+ardModulesInstall {
+	dependsOn ardBowerInstall
+
+	includeEmptyDirs = false
+	from new File(projectDir, "bower_components")
+	into new File(buildDir, "resources/main/META-INF/resources/js/bower_components/")
+	include "**/*.js"
+	include "**/*.css"
+}
+
+build { dependsOn ardModulesInstall }

@@ -1,0 +1,3 @@
+Bundle-Name: user-group-hello-world-web
+Bundle-SymbolicName: com.liferay.usergroup.helloworld
+Bundle-Version: 1.0.0

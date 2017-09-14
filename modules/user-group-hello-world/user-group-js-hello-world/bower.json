@@ -1,0 +1,22 @@
+{
+  "name": "user-group-js-hello-world",
+  "version": "1.0.0",
+  "dependencies": {
+    "funnyText.js": "*"
+  },
+  "authors": [
+    "simone.zaninello <zaninello@ariadne.it>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
